@@ -29,7 +29,8 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-
+CORS_ORIGIN_ALLOW_ALL=True
+CORS_ALLOW_ALL_ORIGINS = True
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +56,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]
-CORS_ALLOW_ALL_ORIGINS = True
 Access_Control_Allow_Origin= '*'
 
 ROOT_URLCONF = 'Stageoneapiproj.urls'
