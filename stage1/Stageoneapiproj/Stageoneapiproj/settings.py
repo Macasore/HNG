@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g^qt83(#k5_5)0c&fi&6$1mlmq!70vkvwd%g7tq%&^7%zki3dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'stageoneapiapp.apps.StageoneapiappConfig'
+    'stageoneapiapp.apps.StageoneapiappConfig',
+    'rest_framework',
+
+    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -48,7 +52,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
+Access_Control_Allow_Origin= '*'
 
 ROOT_URLCONF = 'Stageoneapiproj.urls'
 
@@ -122,10 +130,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-      'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}

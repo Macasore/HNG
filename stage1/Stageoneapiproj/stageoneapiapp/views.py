@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from rest_framework import routers, viewsets, serializers
-from Stageoneapiproj.serializers import apidataSerializer
-from stageoneapiapp.models import apidata
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import apidataSerializer
+from .models import apidata
 
-# Create your views here.
 
-#viewsets
-class apidataViewSet(viewsets.ModelViewSet):
-    queryset = apidata.objects.all()
-    serializer_class = apidataSerializer
+@api_view(['GET'])
+def getData(request):
+    apidatas = apidata.objects.all()[0]
+    serializer = apidataSerializer(apidatas)
+    return Response(serializer.data)
